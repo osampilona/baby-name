@@ -122,7 +122,8 @@
 
 .header {
   text-align: center;
-  padding: 1rem 0;
+  padding: 0.5rem 0;
+  margin-top: 2rem;
 }
 
 .main {
@@ -521,7 +522,8 @@
 
 .header {
   text-align: center;
-  padding: 1rem 0;
+  padding: 0.5rem 0;
+  margin-bottom: 0.5rem;
 }
 
 .mainTitle {
@@ -617,4 +619,49 @@
   background: #8e44ad;
   color: white;
   pointer-events: none;
+}
+
+.languageSwitch {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  display: flex;
+  gap: 0.5rem;
+  padding-bottom: 1rem;
+}
+
+.langButton {
+  padding: 0.5rem 1rem;
+  border: 2px solid #8e44ad;
+  border-radius: 20px;
+  background: white;
+  color: #8e44ad;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.langButton.active {
+  background: #8e44ad;
+  color: white;
+}
+
+@media (max-width: 768px) {
+  .languageSwitch {
+    top: 0.5rem;
+    right: 0.5rem;
+    padding-bottom: 1.5rem;
+  }
+
+  .langButton {
+    padding: 0.3rem 0.8rem;
+    font-size: 0.8rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .languageSwitch {
+    padding-bottom: 2rem;
+  }
 }
