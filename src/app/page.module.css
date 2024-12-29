@@ -591,3 +591,9 @@
     font-size: 2rem;
   }
 }
+
+.optionButton.selected {
+  background: #8e44ad;
+  color: white;
+  pointer-events: none;
+}

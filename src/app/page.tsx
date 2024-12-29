@@ -154,6 +154,7 @@ export default function Home() {
   }>({ show: false, isSuccess: false, message: '' });
   const [isGameCompleted, setIsGameCompleted] = useState(false);
   const [isGameOver, setIsGameOver] = useState(false);
+  const [selectedOption, setSelectedOption] = useState<string | null>(null);
 
   const shuffleQuestions = () => {
     const availablePositions = wordLetters
@@ -181,6 +182,8 @@ export default function Home() {
 
   const handleAnswer = (selectedAnswer: string) => {
     if (!currentQuestion) return;
+    
+    setSelectedOption(selectedAnswer);
 
     if (selectedAnswer === currentQuestion.answer) {
       // Točan odgovor
@@ -256,6 +259,7 @@ export default function Home() {
 
       setTimeout(() => {
         setFeedback({ show: false, isSuccess: false, message: '' });
+        setSelectedOption(null);
         
         if (newAttempts >= 3) {
           setIsGameOver(true);
@@ -270,6 +274,7 @@ export default function Home() {
     setIsGameOver(false);
     setRevealedPositions([]);
     setAttempts(0);
+    setSelectedOption(null);
     setFeedback({ show: false, isSuccess: false, message: '' });
     shuffleQuestions();
   };
@@ -363,7 +368,10 @@ export default function Home() {
                       <button
                         key={index}
                         onClick={() => handleAnswer(option)}
-                        className={styles.optionButton}
+                        className={`${styles.optionButton} ${
+                          selectedOption === option ? styles.selected : ''
+                        }`}
+                        disabled={!!selectedOption}
                       >
                         {option}
                       </button>
