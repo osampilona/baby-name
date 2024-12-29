@@ -351,6 +351,9 @@ export default function Home() {
   const t = translations[language];
 
   const shuffleQuestions = () => {
+    setSelectedOption(null);
+    setIsAnswering(false);
+    
     const availablePositions = wordLetters
       .map((_, index) => index)
       .filter(index => !revealedPositions.includes(index));
@@ -460,7 +463,9 @@ export default function Home() {
     setRevealedPositions([]);
     setAttempts(0);
     setSelectedOption(null);
+    setIsAnswering(false);
     setFeedback({ show: false, isSuccess: false, message: '' });
+    setCurrentQuestion(null);
     shuffleQuestions();
   };
 
@@ -471,6 +476,8 @@ export default function Home() {
     setRevealedPositions([]);
     setAttempts(0);
     setCurrentQuestion(null);
+    setSelectedOption(null);
+    setIsAnswering(false);
     setFeedback({ show: false, isSuccess: false, message: '' });
   };
 
