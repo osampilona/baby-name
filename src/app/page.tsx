@@ -155,6 +155,7 @@ export default function Home() {
   const [isGameCompleted, setIsGameCompleted] = useState(false);
   const [isGameOver, setIsGameOver] = useState(false);
   const [selectedOption, setSelectedOption] = useState<string | null>(null);
+  const [isAnswering, setIsAnswering] = useState(false);
 
   const shuffleQuestions = () => {
     const availablePositions = wordLetters
@@ -181,18 +182,17 @@ export default function Home() {
   };
 
   const handleAnswer = (selectedAnswer: string) => {
-    if (!currentQuestion) return;
+    if (!currentQuestion || isAnswering) return;
     
+    setIsAnswering(true);
     setSelectedOption(selectedAnswer);
 
     if (selectedAnswer === currentQuestion.answer) {
-      // Točan odgovor
       const position = wordLetters.findIndex((letter, index) => 
         letter === currentQuestion.letter && !revealedPositions.includes(index)
       );
 
       if (position !== -1) {
-        // Odmah ažuriramo revealed positions
         const newRevealedPositions = [...revealedPositions, position];
         setRevealedPositions(newRevealedPositions);
 
@@ -208,16 +208,14 @@ export default function Home() {
           origin: { y: 0.6 }
         });
 
-        // Provjeravamo je li igra završena
-        if (newRevealedPositions.length === wordLetters.length) {
-          setTimeout(() => {
-            setFeedback({ show: false, isSuccess: false, message: '' });
+        setTimeout(() => {
+          setFeedback({ show: false, isSuccess: false, message: '' });
+          setSelectedOption(null);
+          setIsAnswering(false);
+          
+          if (newRevealedPositions.length === wordLetters.length) {
             setIsGameCompleted(true);
-          }, 2000);
-        } else {
-          // Postavljamo sljedeće pitanje
-          setTimeout(() => {
-            setFeedback({ show: false, isSuccess: false, message: '' });
+          } else {
             setAttempts(0);
             // Direktno pozivamo shuffleQuestions s novim revealed positions
             const nextAvailablePositions = wordLetters
@@ -241,11 +239,10 @@ export default function Home() {
                 });
               }
             }
-          }, 2000);
-        }
+          }
+        }, 2000);
       }
     } else {
-      // Netočan odgovor - ostaje isto
       const newAttempts = attempts + 1;
       setAttempts(newAttempts);
       
@@ -260,6 +257,7 @@ export default function Home() {
       setTimeout(() => {
         setFeedback({ show: false, isSuccess: false, message: '' });
         setSelectedOption(null);
+        setIsAnswering(false);
         
         if (newAttempts >= 3) {
           setIsGameOver(true);
@@ -371,7 +369,7 @@ export default function Home() {
                         className={`${styles.optionButton} ${
                           selectedOption === option ? styles.selected : ''
                         }`}
-                        disabled={!!selectedOption}
+                        disabled={isAnswering}
                       >
                         {option}
                       </button>

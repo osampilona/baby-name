@@ -83,6 +83,16 @@
   transition: all 0.2s ease;
 }
 
+.optionButton:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+.optionButton.selected {
+  background: #8e44ad;
+  color: white;
+}
+
 .optionButton:hover {
   background: #8e44ad;
   color: white;
