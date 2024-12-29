@@ -365,8 +365,15 @@ export default function Home() {
                     {currentQuestion.options.map((option, index) => (
                       <button
                         key={index}
-                        onClick={() => handleAnswer(option)}
-                        onTouchStart={() => handleAnswer(option)}
+                        onClick={(e) => {
+                          e.preventDefault();
+                          handleAnswer(option);
+                        }}
+                        onTouchStart={(e) => {
+                          e.preventDefault();
+                          handleAnswer(option);
+                        }}
+                        onTouchMove={(e) => e.preventDefault()}
                         onTouchEnd={(e) => e.preventDefault()}
                         className={`${styles.optionButton} ${
                           selectedOption === option ? styles.selected : ''
