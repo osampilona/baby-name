@@ -366,6 +366,8 @@ export default function Home() {
                       <button
                         key={index}
                         onClick={() => handleAnswer(option)}
+                        onTouchStart={() => handleAnswer(option)}
+                        onTouchEnd={(e) => e.preventDefault()}
                         className={`${styles.optionButton} ${
                           selectedOption === option ? styles.selected : ''
                         }`}

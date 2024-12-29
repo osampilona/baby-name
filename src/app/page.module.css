@@ -81,6 +81,9 @@
   font-weight: 600;
   cursor: pointer;
   transition: all 0.2s ease;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+  user-select: none;
 }
 
 .optionButton:disabled {
@@ -98,6 +101,11 @@
   color: white;
   transform: translateY(-2px);
   box-shadow: 0 4px 12px rgba(142, 68, 173, 0.2);
+}
+
+.optionButton:active {
+  background: #8e44ad;
+  color: white;
 }
 
 .page {
