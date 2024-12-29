@@ -21,7 +21,7 @@ const quizQuestions: QuizQuestion[] = [
   },
   {
     letter: "R",
-    question: "U kojem hrvatskom gradu se nalazi Riječka luka?",
+    question: "U kojem hrvatskom gradu se nalazi najveća industrijska luka?",
     answer: "Rijeka",
     options: ["Split", "Zadar", "Rijeka", "Pula"]
   },
