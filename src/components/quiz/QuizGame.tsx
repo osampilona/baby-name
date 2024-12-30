@@ -1,5 +1,4 @@
 'use client';
-
 import { useQuiz } from '@/components/quiz/QuizContext';
 import { translations } from '@/lib/translations';
 import { quizQuestions } from '@/lib/questions';
@@ -25,14 +24,15 @@ export function QuizGame() {
     setFeedback,
     setGameCompleted,
     setCurrentQuestion,
-    setIsAnswering,
     setGameOver
   } = useQuiz();
 
+  const [isAnswering, setIsAnswering] = useState(false);
   const [usedQuestions, setUsedQuestions] = useState<string[]>([]);
   const [shownQuestions, setShownQuestions] = useState<string[]>([]);
 
   const handleAnswer = async (selectedAnswer: string) => {
+    if (isAnswering) return;
     setIsAnswering(true);
     
     if (currentQuestion?.answer === selectedAnswer) {
@@ -173,6 +173,10 @@ export function QuizGame() {
     }
   }, [revealedPositions, isGameStarted, isGameCompleted, isGameOver, language, usedQuestions]);
 
+  const handleTouch = (selectedAnswer: string) => {
+    handleAnswer(selectedAnswer);
+  };
+
   if (!isGameStarted) {
     return <WelcomeScreen />;
   }
@@ -181,7 +185,12 @@ export function QuizGame() {
     <div className={styles.quiz}>
       <RevealedLetters />
       <div className={styles.questionContainer}>
-        {currentQuestion && !isGameCompleted && <QuestionCard onAnswer={handleAnswer} />}
+        {currentQuestion && !isGameCompleted && (
+          <QuestionCard 
+            onAnswer={handleAnswer} 
+            onTouch={handleTouch}
+          />
+        )}
         {(feedback.show || isGameOver || isGameCompleted) && (
           <div className={`${styles.feedbackOverlay} ${isGameOver ? styles.error : feedback.isSuccess ? styles.success : styles.error}`}>
             <div className={styles.feedbackMessage}>
