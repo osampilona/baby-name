@@ -1,0 +1,66 @@
+.languageSwitch {
+  position: fixed;
+  top: 1rem;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 0.8rem;
+  z-index: 100;
+}
+
+.langButton {
+  padding: 0.5rem 1rem;
+  border: 2px solid #8e44ad;
+  border-radius: 25px;
+  background: white;
+  color: #8e44ad;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  box-shadow: 0 2px 8px rgba(142, 68, 173, 0.15);
+}
+
+.langButton:hover {
+  background: #f8f4fb;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(142, 68, 173, 0.2);
+}
+
+.langButton.active {
+  background: #8e44ad;
+  color: white;
+  border-color: #6c3483;
+}
+
+.langButton.active:hover {
+  background: #6c3483;
+}
+
+@media (min-width: 480px) {
+  .languageSwitch {
+    top: 1.5rem;
+  }
+
+  .langButton {
+    padding: 0.6rem 1.2rem;
+    font-size: 1rem;
+  }
+}
+
+@media (min-width: 768px) {
+  .languageSwitch {
+    top: 2rem;
+    left: auto;
+    right: 2rem;
+    transform: none;
+  }
+
+  .langButton {
+    padding: 0.8rem 1.5rem;
+    font-size: 1.1rem;
+  }
+} 

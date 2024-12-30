@@ -1,0 +1,120 @@
+.welcomeScreen {
+  width: 100%;
+  margin: 0;
+  padding: 4rem 1rem 1rem;
+  text-align: center;
+  background: white;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.introText {
+  font-size: 1.2rem;
+  color: #333;
+  margin-bottom: 1rem;
+}
+
+.rulesContainer {
+  margin: 1rem 0;
+  padding: 0.8rem;
+  background: #f8f9fa;
+  border-radius: 8px;
+}
+
+.rulesTitle {
+  color: #8e44ad;
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.rulesList {
+  list-style: none;
+  padding: 0;
+  text-align: left;
+  margin: 0 auto;
+}
+
+.rulesList li {
+  margin: 0.7rem 0;
+  padding-left: 1.5rem;
+  position: relative;
+  font-size: 1rem;
+  color: #444;
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+.rulesList li:before {
+  content: "👉";
+  font-size: 1.1rem;
+}
+
+.babyIcon {
+  font-size: 4rem;
+  margin-bottom: 1rem;
+  animation: float 3s ease-in-out infinite;
+}
+
+.startButton {
+  margin-top: 1.5rem;
+  padding: 0.8rem 2.5rem;
+  font-size: 1.1rem;
+  background: #8e44ad;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+@media (min-width: 768px) {
+  .welcomeScreen {
+    min-height: auto;
+    width: 95%;
+    max-width: 800px;
+    margin: auto;
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    justify-content: center;
+  }
+
+  .introText {
+    font-size: 1.5rem;
+    margin-bottom: 2rem;
+  }
+
+  .rulesContainer {
+    margin: 2rem 0;
+    padding: 1rem;
+  }
+
+  .rulesTitle {
+    font-size: 1.8rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .rulesList li {
+    margin: 1rem 0;
+    font-size: 1.1rem;
+    gap: 1rem;
+  }
+
+  .rulesList li:before {
+    font-size: 1.2rem;
+  }
+
+  .babyIcon {
+    font-size: 5rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .startButton {
+    margin-top: 2rem;
+    padding: 1rem 3rem;
+    font-size: 1.2rem;
+  }
+} 

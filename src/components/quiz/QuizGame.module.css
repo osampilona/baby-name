@@ -1,0 +1,151 @@
+.quiz {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+  background-color: var(--background-color);
+  padding: 1rem;
+}
+
+.questionContainer {
+  width: 100%;
+  max-width: 600px;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  padding: 1.5rem 0;
+  margin: 0 auto;
+  position: relative;
+}
+
+.feedbackOverlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  font-size: 1.5rem;
+  font-weight: bold;
+  animation: fadeIn 0.3s ease-out;
+  z-index: 100;
+  background: white;
+  border-radius: 12px;
+}
+
+.feedbackMessage {
+  width: 95vw;
+  text-align: center;
+  padding: 2rem;
+  line-height: 1.4;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+  background: #fff;
+  border-radius: 8px;
+}
+
+.success .feedbackMessage {
+  min-height: 400px;
+}
+
+.feedbackEmoji {
+  font-size: 4rem;
+}
+
+.success .feedbackEmoji {
+  animation: bounce 0.5s ease infinite;
+}
+
+.error .feedbackEmoji {
+  animation: shake 0.5s ease;
+}
+
+@keyframes bounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+@keyframes shake {
+  0%, 100% {
+    transform: translateX(0);
+  }
+  20%, 60% {
+    transform: translateX(-10px);
+  }
+  40%, 80% {
+    transform: translateX(10px);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@media (min-width: 768px) {
+  .quiz {
+    padding: 2rem;
+    gap: 2rem;
+  }
+
+  .questionContainer {
+    padding: 2rem;
+  }
+
+  .feedbackMessage {
+    width: 95%;
+    max-width: 600px;
+  }
+}
+
+.success {
+  color: #155724;
+  border: 2px solid #d4edda;
+}
+
+.error {
+  color: #721c24;
+  border: 2px solid #f8d7da;
+}
+
+.restartButton {
+  margin-top: 1rem;
+  padding: 0.8rem 2rem;
+  font-size: 1.2rem;
+  background: #8e44ad;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.restartButton:hover {
+  background: #6c3483;
+  transform: translateY(-2px);
+}
+
+.revealedWord {
+  font-size: 3.5rem;
+  font-weight: bold;
+  margin: 1.5rem 0;
+  color: #8e44ad;
+} 
