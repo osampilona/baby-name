@@ -25,21 +25,20 @@
 }
 
 .optionButton {
-  width: 100%;
   padding: 1rem;
-  font-size: 1rem;
-  background: white;
   border: 2px solid #8e44ad;
   border-radius: 8px;
+  background: white;
   color: #8e44ad;
+  font-size: 1.1rem;
+  font-weight: 600;
   cursor: pointer;
   transition: all 0.2s ease;
 }
 
-.optionButton:hover:not(:disabled) {
+.optionButton.active {
   background: #8e44ad;
   color: white;
-  transform: translateY(-2px);
 }
 
 .optionButton:disabled {

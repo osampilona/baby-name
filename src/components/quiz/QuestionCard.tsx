@@ -1,6 +1,6 @@
 'use client';
 
-import React from 'react';
+import React, { useState } from 'react';
 import { useQuiz } from './QuizContext';
 import { translations } from '@/lib/translations';
 import styles from './QuestionCard.module.css';
@@ -18,15 +18,19 @@ export const QuestionCard: React.FC<QuestionCardProps> = ({ onAnswer, onTouch })
     isAnswering
   } = useQuiz();
 
+  const [activeButton, setActiveButton] = useState<string | null>(null);
+
   if (!currentQuestion) return null;
 
   const handleButtonClick = (answer: string) => {
     onAnswer(answer);
+    setActiveButton(answer);
   };
 
   const handleTouch = (e: React.TouchEvent<HTMLButtonElement>, answer: string) => {
     e.preventDefault();
     onTouch(answer);
+    setActiveButton(answer);
   };
 
   return (
@@ -43,7 +47,7 @@ export const QuestionCard: React.FC<QuestionCardProps> = ({ onAnswer, onTouch })
             key={index}
             onClick={() => handleButtonClick(option)}
             onTouchStart={(e) => handleTouch(e, option)}
-            className={styles.optionButton}
+            className={`${styles.optionButton} ${activeButton === option ? styles.active : ''}`}
             disabled={isAnswering}
           >
             {option}
