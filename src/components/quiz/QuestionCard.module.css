@@ -36,6 +36,12 @@
   transition: all 0.2s ease;
 }
 
+/* Add hover effect */
+.optionButton:hover {
+  background: #8e44ad; /* Change background color on hover */
+  color: white; /* Change text color on hover */
+}
+
 .optionButton.active {
   background: #8e44ad;
   color: white;
